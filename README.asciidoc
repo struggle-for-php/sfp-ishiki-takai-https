@@ -42,6 +42,9 @@ var_dump(file_get_contents('https://github.com/',false, $context));
 
 ----
 
+=== Installation
+$ composer require struggle-for-php/sfp-ishiki-takai-https ~1
+
 === See Also
   - https://github.com/padraic/file_get_contents
   - http://blog.astrumfutura.com/2015/02/a-secure-wrapper-for-downloading-https-resources-using-file_get_contents/
