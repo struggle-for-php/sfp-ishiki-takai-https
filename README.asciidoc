@@ -1,0 +1,51 @@
+== ISHIKI TAKAI HTTPS (意識高いHTTPS)
+
+override global *file_get_contents()* behavior with padraic/humbug_get_contents.
+
+(correctly, re-register `https` stream wrapper)
+
+----
+　　　 　 　 　 　 　 　 ／￣二ﾆ=‐-　..__
+　　　　　 　 　 　 　 /　　ﾉー--＝=ﾆ二う
+.　　　 　 　 　 　 　 ｉ　／  __ ,ヽ|　　　　　 　 　 　 
+.　 　 　 　 　 　 　 ｜ !　　 rqq   |ｌ　 　 　 　 　 　 　 
+　　　　　　 　 　 　 {ヽ|　   ゝ　  |)　　　　　　　　　　
+.　　　　　　　　　 　 ｀１　　フ　 ｜　　　このアプリつらいわー。file_get_contents()で、　　 　 　 　
+.　　　　　　　　　　 　 ヽ 　 　 　 ∧_　　　httpsアクセスしててまじつらいわー
+　　　　　　　　　　 　∠二ヽ -‐' ／　>､　　　　　　　 
+.　　　　　　　　 　 ／二ヽ}う　／　／　 ｀　 .　　　　　
+　　　　　　　　 　 |　っ_}ﾉVY^ヽ／　 　 　 　 ｀ヽ　 　 
+　　 　 　 　 　 ／j　__ノ　　l　　　　 　 　 　 ハ 　 
+　　　　　　　　}　,′ |　　 l　　　　ｉ |　　  __j　　
+　　　　 　 　 /　′　 |　　 l　 　 　 ヽ|　 -‐=＝〉　 
+. 　 　 　 　 /　, 　 | 　 ｜　 　 　　 ｜　　　｜
+　 　 　 　 /＿′　　  |　　 |　　　　　 l_＿＿＿_|
+　 　 　 　 　 |!　　 | 　 ｜＞―--　―┴―-　       |
+　　 　 　 　 ｜　　　｜ 　 |//ｉ i r　　　　    ｜
+.　　　　 　 　 ､_＿__,ﾉ　　 |{_ﾋ｀ﾆ7ー'ー-　　 _＿,ﾉ
+　　 　 　 　 　 　 |　 　 　 | |:::::::::|　　　|
+----
+
+=== Usage
+
+[source,php]
+----
+<?php
+// on bootstrap
+require_once __DIR__.'/vendor/autoload.php';
+
+stream_wrapper_unregister('https');
+stream_wrapper_register('https', 'SfpIshikiTakaiHttps\StreamWrapper', STREAM_IS_URL);
+
+// ok, go.
+var_dump(file_get_contents('https://github.com/',false, $context)); 
+
+----
+
+=== See Also
+  - https://github.com/padraic/file_get_contents
+  - http://blog.astrumfutura.com/2015/02/a-secure-wrapper-for-downloading-https-resources-using-file_get_contents/
+
+=== ATTENTION
+THIS PROJECT IS DEMONSTRATION FOR PHP STREAM WRAPPER USAGE, AND NOT INTENDED FOR PRODUCTION USE. PLEASE USE AT YOUR OWN RISK.
+
