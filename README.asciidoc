@@ -34,8 +34,7 @@ override global *file_get_contents()* behavior with padraic/humbug_get_contents.
 // on bootstrap
 require_once __DIR__.'/vendor/autoload.php';
 
-stream_wrapper_unregister('https');
-stream_wrapper_register('https', 'SfpIshikiTakaiHttps\StreamWrapper', STREAM_IS_URL);
+SfpIshikiTakaiHttps\StreamWrapper::register();
 
 // ok, go.
 var_dump(file_get_contents('https://github.com/',false, $context)); 

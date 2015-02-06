@@ -7,6 +7,12 @@ class StreamWrapper
     private $fp;
     private $contextHandler;
 
+    public static function register()
+    {
+        stream_wrapper_unregister('https');
+        stream_wrapper_register('https', 'SfpIshikiTakaiHttps\StreamWrapper', STREAM_IS_URL);
+    }
+
     public function __construct()
     {
         stream_wrapper_unregister('https');
